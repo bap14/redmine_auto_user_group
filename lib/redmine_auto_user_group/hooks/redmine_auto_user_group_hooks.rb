@@ -5,13 +5,16 @@ module RedmineAutoUserGroup
         user = context[:user]
         
         if user.is_a?(User)
-          groupId = Setting.plugin_redmine_auto_user_group['group_id'];
-          group = Group.find(groupId)
+          groupId = Setting.plugin_redmine_auto_user_group['group_id']
           
-          if !user.is_or_belongs_to?(group)
-            user.group_ids = [groupId]
-            user.save
-            user.reload
+          if !groupId.nil? && groupId.length > 0
+            group = Group.find(groupId)
+            
+            if !user.is_or_belongs_to?(group)
+              user.group_ids = [groupId]
+              user.save
+              user.reload
+            end
           end
         end
       end
