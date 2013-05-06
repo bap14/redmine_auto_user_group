@@ -1,0 +1,16 @@
+<p>
+	<label for="settings_redmine_auto_user_group_id">Group</label>
+	<select name="settings[group_id]" id="settings_redmine_auto_user_group_id">
+		<option value=""></option>
+		<%
+			groupId = Setting.plugin_redmine_auto_user_group['group_id']
+			selectedId = nil
+			if !groupId.nil? && groupId.length > 0
+				selectedId = groupId
+			end
+		%>
+		<% get_group_select_options.each do |group| %>
+			<option value="<%= group.id %>"<%= ( !selectedId.nil? && selectedId === group.id.to_s ) ? ' selected="selected"' : '' %>><%= h(group.lastname) %></option>
+		<% end %>
+	</select>
+</p>
