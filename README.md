@@ -14,6 +14,9 @@ Under "Plugins" click the "Configure" link to select which group users should be
 
 # Revision History
 
+## 0.0.2
+* Updated to support Rails 5
+
 ## 0.0.1
 
 Initial release of plugin
